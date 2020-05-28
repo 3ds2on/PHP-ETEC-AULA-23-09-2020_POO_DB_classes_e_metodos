@@ -1,0 +1,46 @@
+.topo{
+    position: absolute;
+    width: 1350px;
+    height: 200px;
+    background-color: DodgerBlue;
+    top: 0px;
+  
+}
+
+.barra-lateral-esquerda{
+    position: absolute;
+    height: 900px;
+    width: 488px;
+    top: 150px;
+    background-color: RoyalBlue;
+    
+}
+
+.barra-lateral-direita{
+    position: absolute;
+    height: 900px;
+    width: 1057px;
+    top: 150px;
+    left: 301px;
+    background-color: LightSteelBlue;
+}
+
+.SobreRodape{
+    position: absolute;
+    height: 600px;
+    width: 1289px;
+	top: 1600px;
+	left: 10px;
+    background-color: SandyBrown;
+}
+
+.rodape{
+    position: absolute;
+    height: 0px;
+    width: 0px;
+	top: 1000px;
+	left: 118px;
+    background-color: PowderBlue;
+}
+
+
