@@ -12,22 +12,35 @@
 $( document ).ready(function() {
 	
 	    $('#btnValidaCPFvetor').click(function(){
-			
-		// VALIDANDO DADOS DO FORMULARIO
-		var txtNome = $('#txtNome').val();
-                var txtEmail = $('#txtEmail').val();
-		var txtMensagem = $('#txtMensagem').val();
-		var txtCelular = $('#txtCelular').val();
-		var txtRetirada = $('#txtRetirada').val();
-		var txtDevolucao = $('#txtDevolucao').val();
-		var txtAluguel = $('#txtAluguel').val();
-		var txtCompacto = $('#txtCompacto').val();
-		var txtSedan = $('#txtSedan').val();
-		var txtPikup = $('#txtPikup').val();
-		var txtHatch = $('#txtHatch').val();
-		var txtSuv = $('#txtSuv').val();
-			
-		if(txtNome.trim() == '' || txtEmail.trim() == '' || txtMensagem.trim() == ''|| txtCelular.trim() == ''){
+	    
+           // VALIDANDO DADOS DO FORMULARIO (CARRO)
+	    var txtCompacto = $('#txtCompacto').val();
+	    var txtSedan = $('#txtSedan').val();
+	    var txtPikup = $('#txtPikup').val();
+	    var txtHatch = $('#txtHatch').val();
+	    var txtSuv = $('#txtSuv').val();
+	    
+           // VALIDANDO DADOS DO FORMULARIO (DADOS PESSOAIS)
+	    var txtNome = $('#txtNome').val();
+	    var txtCelular = $('#txtCelular').val();
+	    var txtEmail = $('#txtEmail').val();
+	    var txtEndereco = $('#txtEndereco').val();
+	    
+           // VALIDANDO DADOS DO FORMULARIO (ADICIONAIS)
+	    var txtRetirada = $('#txtRetirada').val();
+	    var txtRetiradaData = $('#txtRetiradaData').val();
+    	    var horaRetirada = $('#txtRetiradaHora').val();
+	    var txtDevolucao = $('#txtDevolucao').val();
+	    var txtDevolucaoData = $('#txtDevolucaoData').val();
+	    var horaDevolucao = $('#txtDevolucaoHora').val();
+	    var txtCondutor = $('#txtCondutor').val();
+	    var txtCadeirinha = $('#txtCadeirinha').val();
+	    var txtGPS = $('#txtGPS').val();
+	    var txtSeguro = $('#txtSeguro').val();
+	    
+  
+		//CHECA SE OS CAMPOS FORA PREENCHIDOS
+		if(txtNome.trim() == '' || txtEmail.trim() == '' || txtEndereco.trim() == ''|| txtCelular.trim() == ''){
         alert('PREENCHA TODOS CAMPOS DO FORMULARIO !!!');
         return;
         }
@@ -36,13 +49,42 @@ $( document ).ready(function() {
         alert('DIGITE SOMENTE NUMEROS PARA SEU TELEFONE !!!');
         return;
         }
+        
+		//RECEBE E VALIDA O VEICULO RECEBIDO        
+	    	if(txtCompacto != 0) 
+		{
+		var categoria = 'Compacto';
+		var modelo = txtCompacto;
+		}
+		else if (txtSedan != 0) 
+		{
+		var categoria = 'Sedan';
+		var modelo = txtSedan;
+		}
+		else if(txtPikup != 0)
+		{
+		var categoria = 'Pikup';
+		var modelo = txtPikup;
+		}
+		else if(txtHatch != 0) 
+		{
+		var categoria = 'Hatch';
+		var modelo = txtHatch;
+		}
+		else if(txtSuv != 0)
+		{
+		var categoria = 'Suv';
+		var modelo = txtSuv;
+		}
 		
 		
+ 			
 		// RECEBENDO VETOR COM SUBSTRING PARA O CPF
 		var cpfDigitalizado = [];
         for(var cont = 0 ; cont <=10; cont++){
 		cpfDigitalizado[cont] = $('#txtCPF').val().substring(cont,cont + 1);
 		}
+		
 		      	
 		if(cpfDigitalizado[0].trim() == '' || cpfDigitalizado[1].trim() == '' || cpfDigitalizado[2].trim() == ''|| cpfDigitalizado[3].trim() == ''|| cpfDigitalizado[4].trim() == ''|| cpfDigitalizado[5].trim() == ''|| cpfDigitalizado[6].trim() == ''|| cpfDigitalizado[7].trim() == ''|| cpfDigitalizado[8].trim() == ''|| cpfDigitalizado[9].trim() == ''|| cpfDigitalizado[10].trim() == ''){
         alert('PREENCHA TODOS OS NUMEROS DO SEU CPF');
@@ -109,7 +151,8 @@ $( document ).ready(function() {
 		}		
 		else if (PrimeiroVerificador == cpfDigitalizado[9] && SegundoVerificador == cpfDigitalizado[10]) 
 		{        
-	        window.location.href = "../MoratoCarLocadoraPag.php?txtNome=" +txtNome+ "&cpfDigitalizado=" +cpfDigitalizado+ "&txtEmail=" +txtEmail+ "&txtMensagem=" +txtMensagem+ "&txtCelular=" +txtCelular+ "&txtRetirada=" +txtRetirada+ "&txtDevolucao=" +txtDevolucao+ "&txtAluguel=" +txtAluguel+ "&txtSedan=" +txtSedan+ "&txtPikup=" +txtPikup+ "&txtHatch=" +txtHatch+ "&txtSuv=" +txtSuv;
+	        window.location.href = "../MoratoCarLocadoraPag.php?txtNome=" +txtNome+ "&cpfDigitalizado=" +cpfDigitalizado+ "&txtEmail=" +txtEmail+ "&txtEndereco=" +txtEndereco+ "&txtCelular=" +txtCelular+ "&txtRetirada=" +txtRetirada+ "&txtDevolucao=" +txtDevolucao+ "&txtRetiradaData=" +txtRetiradaData+ "&txtDevolucao=" +txtDevolucao+ "&txtDevolucaoData=" +txtDevolucaoData+ "&txtCondutor=" +txtCondutor+ "&txtCadeirinha=" +txtCadeirinha+ "&categoria=" +categoria+ "&txtSeguro=" +txtSeguro+ "&txtGPS=" +txtGPS+ "&modelo=" +modelo+ "&horaRetirada=" +horaRetirada+ "&horaDevolucao=" +horaDevolucao;
+	        
 		}
 		else
 		{
